@@ -1,5 +1,6 @@
 package paq;
 
+@SuppressWarnings("serial")
 public class Secretaria extends Empleados{
 
 	//Constructor con base en método padre.

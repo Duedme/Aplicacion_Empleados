@@ -1,5 +1,6 @@
 package paq;
 
+@SuppressWarnings("serial")
 public class Asesor extends Empleados implements FuncionesGerenciales{
 
 	public Asesor(String clave, String nombre, int edad, String genero, String descPuesto, float sueldo) {

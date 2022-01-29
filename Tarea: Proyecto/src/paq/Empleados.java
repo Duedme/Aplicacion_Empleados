@@ -1,6 +1,8 @@
 package paq;
+import java.io.Serializable;
 
-public abstract class Empleados {
+@SuppressWarnings("serial")
+public abstract class Empleados implements Serializable{
 
 	//Atributos
 	private String clave;
@@ -8,7 +10,7 @@ public abstract class Empleados {
 	private int edad;
 	private String genero;
 	private String descPuesto;
-	private float sueldo;
+	private transient float sueldo;
 	
 	//métodos abstractas
 	abstract float calculaImpuesto();

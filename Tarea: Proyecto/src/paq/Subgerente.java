@@ -1,5 +1,6 @@
 package paq;
 
+@SuppressWarnings("serial")
 public class Subgerente extends Gerente{
 
 	public Subgerente(String clave, String nombre, int edad, String genero, String descPuesto, float sueldo) {

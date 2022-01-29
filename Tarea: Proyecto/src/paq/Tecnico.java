@@ -1,5 +1,6 @@
 package paq;
 
+@SuppressWarnings("serial")
 public class Tecnico extends Empleados{
 
 	public Tecnico(String clave, String nombre, int edad, String genero, String descPuesto, float sueldo) {

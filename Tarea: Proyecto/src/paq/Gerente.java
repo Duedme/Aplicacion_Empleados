@@ -1,5 +1,6 @@
 package paq;
 
+@SuppressWarnings("serial")
 public class Gerente extends Empleados implements FuncionesGerenciales{
 
 	public Gerente(String clave, String nombre, int edad, String genero, String descPuesto, float sueldo) {
