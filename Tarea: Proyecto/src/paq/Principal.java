@@ -1,8 +1,10 @@
 package paq;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Hashtable;
@@ -11,25 +13,27 @@ import java.util.Scanner;
 public class Principal {
 
 	@SuppressWarnings("unchecked")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		//Creación de Menú
 		@SuppressWarnings("resource")
 		Scanner num = new Scanner (System.in);
+		BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
 		int opcion;
 		
 		do
 		{
+			System.out.print("Por favor elija una opción del menú.\n\n"
+					+ "_____________________________\n\n");
 			System.out.println("Menú:\n"
 					+ "\tRegistrar Empleado: Oprima '1'\n"
 					+ "\tEliminar Empleado: Oprima '2'\n"
-					+ "\tMostrar a todos los Empleados: Oprima '3'"
-					+ "\tHacer modificaciones: Oprima '4'"
-					+ "\tSerializar lista de Empleados: Oprima '5'"
-					+ "\tDesearializar lista de Empleados: Oprima '6'"
+					+ "\tMostrar a todos los Empleados: Oprima '3'\n"
+					+ "\tHacer modificaciones: Oprima '4'\n"
+					+ "\tSerializar lista de Empleados: Oprima '5'\n"
+					+ "\tDesearializar lista de Empleados: Oprima '6'\n"
 					+ "\tSalir del menú: Oprima '7'");
 			
-			System.out.print("Por favor elija una opción del menú.");
 			opcion = num.nextInt();
 			
 			switch (opcion)
@@ -38,25 +42,27 @@ public class Principal {
 					String clave = null, puesto = null;
 					int opcion2;
 					
-					System.out.println("\tUsted ha elegido contratar un empleado:\n"
+					System.out.println("_________________________\n\n"
+							+ "Usted ha elegido contratar un empleado:\n"
 							+ "\tPor favor, teclee la clave de su empleado.\n"
 							+ "\tSi se equivocó de opción, oprima '0'.");
 					
-					clave = num.nextLine();
+					clave = reader.readLine();
 					
-					if (clave == "0") break;
+					//if (clave == "0") goto ;
 					
-					System.out.println("\tPor favor diga qué puesto tiene su empleado:\n"
-							+ "Gerente: Oprima 1;\n"
-							+ "Subgerente: Oprima 2;\n"
-							+ "Secretaria: Oprima 3;\n"
-							+ "Asesor: Oprima 4;\n"
-							+ "Técnico: Oprima 5;\n");
+					System.out.println("__________________________\n\n"
+							+ "Por favor diga qué puesto tiene su empleado:\n"
+							+ "\tGerente: Oprima 1;\n"
+							+ "\tSubgerente: Oprima 2;\n"
+							+ "\tSecretaria: Oprima 3;\n"
+							+ "\tAsesor: Oprima 4;\n"
+							+ "\tTécnico: Oprima 5;\n");
 					
 					System.out.println("Proporcione la siguiente información del Empleado: ");
-							System.out.print("Nombre: "); String nombre = num.nextLine();
+							System.out.print("Nombre: "); String nombre = reader.readLine();
 							System.out.print("Edad: "); int edad = num.nextInt();
-							System.out.print("Género: "); String genero = num.nextLine();
+							System.out.print("Género: "); String genero = reader.readLine();
 							System.out.print("Sueldo: "); float sueldo = num.nextFloat();
 					opcion2 = num.nextInt();
 					switch (opcion2)
