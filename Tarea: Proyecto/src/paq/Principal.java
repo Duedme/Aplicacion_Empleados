@@ -23,7 +23,8 @@ public class Principal {
 		
 		do
 		{
-			System.out.print("Por favor elija una opción del menú.\n\n"
+			System.out.print("_______________________________\n"
+					+ "\n\n\tPor favor elija una opción del menú.\n\n"
 					+ "_____________________________\n\n");
 			System.out.println("Menú:\n"
 					+ "\tRegistrar Empleado: Oprima '1'\n"
@@ -44,12 +45,9 @@ public class Principal {
 					
 					System.out.println("_________________________\n\n"
 							+ "Usted ha elegido contratar un empleado:\n"
-							+ "\tPor favor, teclee la clave de su empleado.\n"
-							+ "\tSi se equivocó de opción, oprima '0'.");
+							+ "\tPor favor, teclee la clave de su empleado.\n");
 					
 					clave = reader.readLine();
-					
-					//if (clave == "0") goto ;
 					
 					System.out.println("__________________________\n\n"
 							+ "Por favor diga qué puesto tiene su empleado:\n"
@@ -58,56 +56,70 @@ public class Principal {
 							+ "\tSecretaria: Oprima 3;\n"
 							+ "\tAsesor: Oprima 4;\n"
 							+ "\tTécnico: Oprima 5;\n");
+					opcion2 = num.nextInt();
 					
 					System.out.println("Proporcione la siguiente información del Empleado: ");
 							System.out.print("Nombre: "); String nombre = reader.readLine();
 							System.out.print("Edad: "); int edad = num.nextInt();
 							System.out.print("Género: "); String genero = reader.readLine();
-							System.out.print("Sueldo: "); float sueldo = num.nextFloat();
-					opcion2 = num.nextInt();
+							System.out.print("Sueldo: "); int sueldo = num.nextInt();
+							
 					switch (opcion2)
 					{
-						case 1: puesto = "Gerente"; 
+						case 1: puesto = " Gerente"; 
 							Coleccion_Empleados.ClaveYEmpleados.put(clave, new Gerente(clave, nombre, edad, puesto, genero, sueldo));
 							break;
-						case 2: puesto = "Subgerente";
+						case 2: puesto = " Subgerente";
 							Coleccion_Empleados.ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
 						break;
-						case 3: puesto = "Secretaria"; 
+						case 3: puesto = " Secretaria"; 
 							Coleccion_Empleados.ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
 						break;
-						case 4: puesto = "Asesor"; 
+						case 4: puesto = " Asesor"; 
 							Coleccion_Empleados.ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
 						break;
 						
-						case 5: puesto = "Técnico"; 
+						case 5: puesto = " Técnico"; 
 							Coleccion_Empleados.ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
-						break;	
+						break;
+						default: System.out.println("\n\tPor favor otorgue una opción válida para el puesto.");
 						
 					} 
-					System.out.println("Se ha agregado un " + puesto + ".");
 					
-					System.out.println("__________________________");
-							
+					if (opcion2 > 5 || opcion2 < 1)
+						continue;
+					else
+						System.out.println("\n\tSe ha agregado un" + puesto + ".");
+					
 					break;
 					
 				case 2:
 					String clave1 = null;
 					
-					System.out.println("\tUsted ha decidido despedir a un empleado:\n"
-							+ "\tPor favor proporcione al clave de aquél eliminado.;");
+					System.out.println("_________________________________\n\n"
+							+ "\tUsted ha decidido despedir a un empleado:\n");
 					
-					clave1 = num.nextLine();
-					
-					try
+					if (Coleccion_Empleados.ClaveYEmpleados.isEmpty())
 					{
-						Coleccion_Empleados.ClaveYEmpleados.remove(clave1);
-						System.out.println("Se ha removido a aquel con la clave " + clave1 + ".");
+						System.out.println("\tLa lista se encuentra vacía, contrate a alguien para despedirlo.");
+						break;
 					}
-					catch (NullPointerException e)
+					else
 					{
-						System.out.println("La clave que entregó no se encuentra en el registro,\n"
-								+ "inténtelo más tarde.");
+						System.out.println("\tPor favor proporcione al clave de aquél eliminado.;");
+							
+						clave1 = reader.readLine();
+						
+						if (Coleccion_Empleados.ClaveYEmpleados.containsKey(clave1))
+						{
+							Coleccion_Empleados.ClaveYEmpleados.remove(clave1);
+							System.out.println("\tSe ha removido a aquel con la clave " + clave1 + ".\n\n");
+						}
+						else
+						{
+							System.out.println("\tLa clave que entregó no se encuentra en el registro,\n"
+								+ "\tinténtelo más tarde.\n\n");
+						}
 					}
 					
 					break;
@@ -115,34 +127,39 @@ public class Principal {
 				case 3:
 					
 					if (Coleccion_Empleados.ClaveYEmpleados.values().isEmpty())
-						System.out.println("Usted no tiene empleados.");
+						System.out.println("\tUsted no tiene empleados.\n"
+								+ "\tPor favor contrate a alguien.");
 					
 					else {
-						System.out.println("Todos los empleados son lo siguiente: \n\n"
-							+ Coleccion_Empleados.ClaveYEmpleados.values());
+						System.out.println("\tTodos los empleados son lo siguiente: \n\n\t"
+							+ "Empleados:\n\t" + Coleccion_Empleados.ClaveYEmpleados.values());
 					}
 					
 					break;
 					
 				case 4: 
 					
+
+					System.out.println("_________________________________\n\n");
+					
 					String clave2 = null;
 					int opcion1, iralmenu;
 					
-					System.out.print("\tUsted ha decidido modificar algún registro.\n"
-							+ "Por favor proporcione la nueva clave de su empleado y su puesto.\n\n"
+					System.out.print("\tUsted ha decidido modificar algún registro.\n");
+					
+					System.out.println("\t\nPor favor proporcione la nueva clave de su empleado y su puesto.\n\n"
 							+ "\tClave: ");
 					clave2 = num.nextLine();
 					
-					System.out.println("\tPor favor diga qué puesto tiene su empleado:\n"
-							+ "Gerente: Oprima 1;\n"
-							+ "Subgerente: Oprima 2;\n"
-							+ "Secretaria: Oprima 3;\n"
-							+ "Asesor: Oprima 4;\n"
-							+ "Técnico: Oprima 5;\n");
+					System.out.println("Por favor diga qué puesto tiene su empleado:\n"
+							+ "\tGerente: Oprima 1;\n"
+							+ "\tSubgerente: Oprima 2;\n"
+							+ "\tSecretaria: Oprima 3;\n"
+							+ "\tAsesor: Oprima 4;\n"
+							+ "\tTécnico: Oprima 5;\n");
 					opcion1 = num.nextInt();
 					
-					System.out.println("Proporcione la siguiente información del Empleado: ");
+					System.out.println("\tProporcione la siguiente información del Empleado: ");
 							System.out.print("Nombre: "); String nombre1 = num.nextLine();
 							System.out.print("Edad: "); int edad1 = num.nextInt();
 							System.out.print("Género: "); String genero1 = num.nextLine();
@@ -178,11 +195,11 @@ public class Principal {
 						
 						} 
 					
-					
-					
 					break;
 
 				case 5: 
+					
+					System.out.println("_________________________________\n\n");
 					
 					System.out.println("\tUsted ha decidido serializar la lista.");
 					
@@ -194,14 +211,18 @@ public class Principal {
 						fuera.close();
 						archfuera.close();
 						
-						System.out.println("Sus empleados fueron serializados.");
+						System.out.println("\tSus empleados fueron serializados en el archivo empleados.ser.");
 					}
 					catch (IOException e)
 					{
-						System.out.println("Ocurrió un error en el proceso. Inténtelo más tarde.");
+						System.out.println("\tOcurrió un error en el proceso. Inténtelo más tarde.");
 					}
 					
+					break;
+					
 				case 6: 
+					
+					System.out.println("_________________________________\n\n");
 					
 					System.out.println("\tUsted ha decidido deserializar la lista.");
 					
@@ -215,16 +236,17 @@ public class Principal {
 						dentro.close();
 						archdentro.close();
 						
-						System.out.println("Se ha recuperado la información. Se la mostraré ahora: \n\n"
+						System.out.println("\n\tSe ha recuperado la información. Se la mostraré ahora: \n\n"
 								+ recuperados);
 					}
 					catch (IOException | ClassNotFoundException e)
 					{
-						System.out.println("Hubo un error al recuperar la información.");
+						System.out.println("\tHubo un error al recuperar la información.");
 					}
 					
 					break;
-				default: System.out.println("Elija una opción válida por favor"); break;
+					
+				default: System.out.println("\tElija una opción válida por favor"); break;
 			}
 			
 			
