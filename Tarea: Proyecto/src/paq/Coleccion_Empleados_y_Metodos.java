@@ -23,33 +23,32 @@ public class Coleccion_Empleados_y_Metodos {
 		Scanner num = new Scanner (System.in);
 		
 		System.out.println("\tPor favor diga qué puesto tiene su empleado:\n"
-									+ "\tGerente: Oprima 1;\n"
-									+ "\tSubgerente: Oprima 2;\n"
-									+ "\tSecretaria: Oprima 3;\n"
-									+ "\tAsesor: Oprima 4;\n"
-									+ "\tTécnico: Oprima 5;\n");
-							opcion = num.nextInt();
+					+ "\tGerente: Oprima 1;\n"
+					+ "\tSubgerente: Oprima 2;\n"
+					+ "\tSecretaria: Oprima 3;\n"
+					+ "\tAsesor: Oprima 4;\n"
+					+ "\tTécnico: Oprima 5;\n");
+		opcion = num.nextInt();
 						
-							switch (opcion)
-								{
-									case 1: puesto = "Gerente"; 
-										ClaveYEmpleados.put(clave, new Gerente(clave, nombre, edad, puesto, genero, sueldo));
-										break;
-									case 2: puesto = "Subgerente";
-										ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
-										break;
-									case 3: puesto = "Secretaria"; 
-										ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
-										break;
-									case 4: puesto = "Asesor"; 
-										ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
-										break;
-						
-									case 5: puesto = "Técnico"; 
-										ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
-										break;	
-									default: System.out.println("\n\tPor favor otorgue una opción válida para el puesto.");
-								} 
+		switch (opcion)
+		{
+			case 1: puesto = "Gerente"; 
+				ClaveYEmpleados.put(clave, new Gerente(clave, nombre, edad, puesto, genero, sueldo));
+				break;
+			case 2: puesto = "Subgerente";
+				ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
+				break;
+			case 3: puesto = "Secretaria"; 
+				ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
+				break;
+			case 4: puesto = "Asesor"; 
+				ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
+				break;
+			case 5: puesto = "Técnico"; 
+				ClaveYEmpleados.put(clave, new Subgerente(clave, nombre, edad, puesto, genero, sueldo));
+				break;	
+			default: System.out.println("\n\tPor favor otorgue una opción válida para el puesto.");
+		} 
 	}
 	
 	static void Serializar()
